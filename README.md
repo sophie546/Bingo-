@@ -14,6 +14,6 @@ Add Cards: Use "ADD NEW CARD" to add bingo cards<br>
 Begin Game: Start calling numbers (1-75)<br>
 Track Progress: Monitor the official game board<br>
 Declare Winners: Use "CHECK ALL CARDS" to verify wins<br>
-<br><br>
+
 ## Contributing
 Feel free to submit issues and enhancement requests for the bingo platform!!.
