@@ -1,0 +1,168 @@
+.game-controls {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid #333333;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.game-controls h3 {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  text-align: left;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  opacity: 0.8;
+}
+
+.control-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.control-btn {
+  background: #2a2a2a;
+  color: #ffffff;
+  border: 2px solid transparent;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.control-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.1);
+  background: #333333;
+}
+
+.control-btn:active {
+  transform: translateY(0);
+}
+
+.control-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #2196f3, #4caf50);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.control-btn:hover::before {
+  opacity: 1;
+}
+
+.btn-text {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-subtext {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  font-weight: 400;
+}
+
+.add-card-btn {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+}
+
+.add-card-btn:hover {
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+  box-shadow: 0 4px 20px rgba(33, 150, 243, 0.2);
+}
+
+.check-all-btn {
+  background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+}
+
+.check-all-btn:hover {
+  background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%);
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.2);
+}
+
+.check-all-btn:disabled {
+  background: #2a2a2a;
+  color: #666666;
+  cursor: not-allowed;
+  transform: none;
+  border-color: transparent;
+}
+
+.check-all-btn:disabled:hover {
+  background: #2a2a2a;
+  box-shadow: none;
+}
+
+.check-all-btn:disabled::before {
+  display: none;
+}
+
+.game-info {
+  background: #252525;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #333333;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-label {
+  color: #b0b0b0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.card-count {
+  background: linear-gradient(135deg, #2196f3, #4caf50);
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 10px;
+  min-width: 60px;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .game-controls {
+    padding: 20px;
+  }
+  
+  .control-btn {
+    padding: 16px;
+  }
+  
+  .card-count {
+    font-size: 1.3rem;
+    padding: 10px 20px;
+  }
+}

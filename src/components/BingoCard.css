@@ -1,0 +1,458 @@
+:root {
+  --card-bg: #0a0a0f;
+  --card-surface: #111118;
+  --card-border: #222230;
+  --card-highlight: #2a2a3a;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0c0;
+  --accent-blue: #4dabf7;
+  --accent-green: #51cf66;
+  --accent-orange: #ff922b;
+  --accent-purple: #7950f2;
+  --accent-red: #ff6b6b;
+  --glow-blue: rgba(77, 171, 247, 0.4);
+  --glow-green: rgba(81, 207, 102, 0.4);
+  --glow-orange: rgba(255, 146, 43, 0.4);
+}
+
+.bingo-card {
+  background: linear-gradient(145deg, var(--card-bg), #0c0c14);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--card-border);
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.bingo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--accent-blue), 
+    var(--accent-purple), 
+    var(--accent-blue), 
+    transparent
+  );
+  opacity: 0.6;
+}
+
+.bingo-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-blue);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(77, 171, 247, 0.1);
+}
+
+.bingo-card.winner {
+  border-color: var(--accent-green);
+  background: linear-gradient(145deg, #0a130a, #0a0a0f);
+}
+
+.bingo-card.winner::before {
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--accent-green), 
+    #2ecc71, 
+    var(--accent-green), 
+    transparent
+  );
+}
+
+.bingo-card.potential-winner {
+  border-color: var(--accent-orange);
+}
+
+.bingo-card.potential-winner::before {
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--accent-orange), 
+    #ffa94d, 
+    var(--accent-orange), 
+    transparent
+  );
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--card-border);
+  position: relative;
+}
+
+.card-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-header h3 {
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  padding-left: 12px;
+}
+
+.card-header h3::before {
+  content: '●';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 8px;
+  color: var(--accent-blue);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.card-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-indicator {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--card-surface);
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.status-indicator.winner {
+  background: rgba(81, 207, 102, 0.1);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  box-shadow: 0 0 20px var(--glow-green);
+}
+
+.status-indicator.potential {
+  background: rgba(255, 146, 43, 0.1);
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+  box-shadow: 0 0 20px var(--glow-orange);
+}
+
+.status-indicator.active {
+  background: rgba(77, 171, 247, 0.1);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.card-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.check-btn {
+  background: linear-gradient(135deg, var(--accent-blue), #339af0);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.check-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: 0.5s;
+}
+
+.check-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(77, 171, 247, 0.3);
+}
+
+.check-btn:hover::before {
+  left: 100%;
+}
+
+.check-btn.winner-btn {
+  background: linear-gradient(135deg, var(--accent-green), #40c057);
+  box-shadow: 0 4px 15px var(--glow-green);
+}
+
+.check-btn.winner-btn:hover {
+  box-shadow: 0 8px 30px var(--glow-green);
+}
+
+.check-btn.potential-btn {
+  background: linear-gradient(135deg, var(--accent-orange), #fd7e14);
+  box-shadow: 0 4px 15px var(--glow-orange);
+}
+
+.check-btn.potential-btn:hover {
+  box-shadow: 0 8px 30px var(--glow-orange);
+}
+
+.remove-btn {
+  background: var(--card-surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--card-border);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+  background: var(--accent-red);
+  color: white;
+  border-color: var(--accent-red);
+  transform: rotate(90deg);
+}
+
+/* BINGO Header Styles */
+.card-grid {
+  margin: 28px 0;
+}
+
+.bingo-header {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.bingo-letter {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  padding: 16px 0;
+  background: var(--card-surface);
+  border-radius: 12px;
+  border: 2px solid transparent;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.bingo-letter:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.bingo-letter.B {
+  border-color: var(--accent-blue);
+  background: linear-gradient(145deg, rgba(77, 171, 247, 0.1), var(--card-surface));
+}
+
+.bingo-letter.I {
+  border-color: var(--accent-purple);
+  background: linear-gradient(145deg, rgba(121, 80, 242, 0.1), var(--card-surface));
+}
+
+.bingo-letter.N {
+  border-color: var(--accent-green);
+  background: linear-gradient(145deg, rgba(81, 207, 102, 0.1), var(--card-surface));
+}
+
+.bingo-letter.G {
+  border-color: var(--accent-orange);
+  background: linear-gradient(145deg, rgba(255, 146, 43, 0.1), var(--card-surface));
+}
+
+.bingo-letter.O {
+  border-color: var(--accent-red);
+  background: linear-gradient(145deg, rgba(255, 107, 107, 0.1), var(--card-surface));
+}
+
+.letter-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.card-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-surface);
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  border: 1px solid var(--card-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-cell:hover {
+  background: var(--card-highlight);
+  border-color: var(--accent-blue);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-cell.called {
+  background: linear-gradient(135deg, var(--accent-green), #40c057);
+  color: white;
+  border-color: var(--accent-green);
+  box-shadow: 0 8px 25px var(--glow-green);
+  transform: scale(1.05);
+}
+
+.cell-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--card-border);
+}
+
+.token-display {
+  background: var(--card-surface);
+  padding: 14px 24px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  text-align: center;
+  min-width: 200px;
+}
+
+.token-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.token-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Animations */
+@keyframes card-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.bingo-card {
+  animation: card-appear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bingo-card {
+    padding: 20px;
+  }
+  
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .card-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .check-btn {
+    flex: 1;
+  }
+  
+  .bingo-letter {
+    font-size: 1.5rem;
+    padding: 14px 0;
+  }
+  
+  .card-cell {
+    font-size: 1.2rem;
+  }
+  
+  .card-grid {
+    margin: 24px 0;
+  }
+}

@@ -1,0 +1,89 @@
+.game-board {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid #333333;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.board-header {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #333333;
+}
+
+.board-header h3 {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  opacity: 0.8;
+}
+
+.board-content {
+  text-align: center;
+}
+
+.board-description {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+.official-board-btn {
+  display: block;
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 24px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.official-board-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.3);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.official-board-btn:active {
+  transform: translateY(0);
+}
+
+.btn-main-text {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.btn-subtext {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .game-board {
+    padding: 20px;
+  }
+  
+  .official-board-btn {
+    padding: 20px;
+  }
+}
